@@ -24,8 +24,27 @@ $form.addEventListener("submit", async (e) => {
   }).then((response) => {
     if (response.ok) {
       // ! REDIRIGIR AL USUARIO A LA PÁGINA PRINCIPAL
+      window.location.pathname = "/pages/home";
     } else {
       // ! MOSTRAR UN MENSAJE DE ERROR AL USUARIO
+      Swal.fire({
+        title: "Error",
+        text: data.message || "Invalid login credentials",
+        icon: "error",
+        confirmButtonText: "Try again",
+      });
     }
+  })
+  .catch((error) => {
+    // Manejar errores en la solicitud
+    Swal.fire({
+      title: "Error",
+      text: "An error occurred while trying to log in. Please try again later.",
+      icon: "error",
+      confirmButtonText: "OK",
+    })
   });
 });
+
+
+      
